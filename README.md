@@ -97,5 +97,7 @@ Team Roles
 - Backend & AI Integration
 - Research & Documentation
 
+  Leveraging advanced AI technology, the platform delivers immersive heritage storytelling experiences tailored to user interests. Voice narration is supported in English and Hindi, with Hindi audio available when the language is enabled in the user’s local system settings; otherwise, the platform seamlessly falls back to text-based storytelling to ensure uninterrupted access.
+
 📄 License
 This project is licensed under the MIT License.
