@@ -3,8 +3,7 @@ services:
     name: bharath-heritage-ai
     runtime: python
     startCommand: "gunicorn --workers 4 --worker-class sync --bind 0.0.0.0:$PORT googlehackathon.backend.app:app"
-    buildCommand: "pip install -r requirements.txt"
-    root: .
+    buildCommand: "cd $PWD && pip install -r requirements.txt"
     envVars:
       - key: FLASK_ENV
         value: production
