@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: bharath-heritage-ai
+    runtime: python
+    startCommand: "gunicorn --workers 4 --worker-class sync --bind 0.0.0.0:$PORT googlehackathon.backend.app:app"
+    buildCommand: "pip install -r googlehackathon/backend/requirements.txt"
+    root: .
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: GROQ_API_KEY
+        sync: false

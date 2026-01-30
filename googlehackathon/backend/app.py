@@ -4,11 +4,17 @@ import requests
 import urllib.parse
 import time
 import re
+import os
+from pathlib import Path
 
-app = Flask(__name__)
+# ================== FLASK APP CONFIG ==================
+template_dir = Path(__file__).parent.parent / "frontend"
+app = Flask(__name__, template_folder=str(template_dir))
 
 # ================== API KEY ==================
-GROQ_API_KEY = "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"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+if not GROQ_API_KEY:
+    raise ValueError("GROQ_API_KEY environment variable not set")
 client = Groq(api_key=GROQ_API_KEY)
 
 # ================== DATA ==================
@@ -182,4 +188,6 @@ def wiki_images():
 
 # ================== RUN ==================
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.getenv("PORT", 5000))
+    debug = os.getenv("FLASK_ENV", "production") == "development"
+    app.run(host="0.0.0.0", port=port, debug=debug)
